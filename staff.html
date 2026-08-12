@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kupuri The Rooftop — Staff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --r-navy:#1C2B3A;
+    --r-navy-dark:#111C26;
+    --r-gold:#E8B923;
+    --r-black:#000000;
+    --r-white:#FFFFFF;
+    --bg-warm:#FFFBF5;
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; font-family:'Poppins', sans-serif; background:var(--bg-warm); color:var(--r-black); min-height:100vh; }
+  header{ background:var(--bg-warm); padding:2rem 1.5rem 1.5rem; text-align:center; border-bottom:1px solid #eee2cf; }
+  header img.logo{ width:230px; display:block; margin:0 auto; }
+  .config-warning{ background:#FCEBEB; color:#791F1F; font-size:0.8rem; text-align:center; padding:10px 16px; display:none; }
+  main{ max-width:480px; margin:0 auto; padding:1.5rem 1.25rem 1rem; }
+  .field{margin-bottom:1rem;}
+  .field label{ display:block; font-size:0.8rem; color:#666; margin-bottom:6px; }
+  .field input, .field select{
+    width:100%; padding:12px 14px; border:1px solid #ddd; border-radius:10px;
+    font-family:'Poppins',sans-serif; font-size:0.95rem; background:#fff;
+  }
+  .field input:focus, .field select:focus{ outline:none; border-color:var(--r-navy); }
+  .btn{
+    width:100%; padding:13px; border:none; border-radius:10px;
+    background:var(--r-navy); color:var(--r-white);
+    font-family:'Poppins',sans-serif; font-weight:500; font-size:0.95rem; cursor:pointer; margin-top:4px;
+  }
+  .btn:active{background:var(--r-navy-dark);}
+  .btn:disabled{opacity:0.4;cursor:default;}
+  .btn-link{
+    width:100%; padding:10px; border:none; background:none; color:var(--r-navy);
+    font-family:'Poppins',sans-serif; font-weight:500; font-size:0.85rem; cursor:pointer; text-align:center; margin-bottom:6px;
+  }
+  .btn-whatsapp{
+    display:block; width:100%; text-align:center; padding:13px; border-radius:10px;
+    background:#25D366; color:#fff; font-family:'Poppins',sans-serif; font-weight:500;
+    font-size:0.9rem; text-decoration:none; margin-top:10px; box-sizing:border-box;
+  }
+  .mas-datos{display:none;}
+  .mas-datos.abierto{display:block;}
+  .datos-extra{ font-size:0.8rem; color:#666; margin-top:1rem; padding-top:1rem; border-top:1px solid #eee; }
+  .datos-extra p{margin:0 0 6px;}
+  .datos-extra strong{color:var(--r-black);}
+  .info-programa{ background:#FBF0D2; border-radius:14px; padding:14px 16px; margin-bottom:1.25rem; font-size:0.8rem; }
+  .info-programa p{ margin:0 0 6px; font-weight:500; }
+  .info-programa p:last-child{margin-bottom:0;}
+  .card{ background:var(--r-white); border-radius:16px; padding:1.5rem; margin-top:1.25rem; box-shadow:0 2px 14px rgba(0,0,0,0.06); }
+  .card-name{ font-family:'Fraunces',serif; font-size:1.3rem; margin:0 0 4px; }
+  .card-phone{ font-size:0.8rem; color:#999; margin:0 0 1.25rem; }
+  .stamps{ display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-bottom:1.25rem; }
+  .stamp{
+    aspect-ratio:1; border-radius:50%; border:2px dashed #ddd;
+    display:flex; align-items:center; justify-content:center; font-size:1.1rem; position:relative;
+  }
+  .stamp.filled{ border:2px solid var(--r-gold); background:var(--r-gold); color:var(--r-navy); }
+  .stamp.milestone::after{
+    content:attr(data-mark); position:absolute; bottom:-18px; font-size:0.58rem;
+    color:var(--r-navy); font-weight:600; white-space:nowrap;
+  }
+  .rewards{margin-top:1.75rem;}
+  .reward{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 14px; border-radius:10px; background:#FBF0D2; margin-bottom:10px; font-size:0.85rem;
+  }
+  .reward.locked{ background:#f2f2f2; color:#aaa; }
+  .reward-label{font-weight:500;}
+  .reward-note{ font-size:0.7rem; color:#8a6d1f; display:block; margin-top:2px; }
+  .reward.locked .reward-note{color:#bbb;}
+  .reward button{
+    padding:8px 12px; border:none; border-radius:8px; background:var(--r-navy); color:#fff;
+    font-size:0.75rem; font-weight:500; cursor:pointer;
+  }
+  .msg{ text-align:center; font-size:0.85rem; color:#999; padding:2rem 0; }
+  .msg.error{color:#c0392b;}
+  footer{ text-align:center; padding:1.5rem 1.25rem 2rem; max-width:480px; margin:0 auto; }
+  footer .brand{ font-size:0.7rem; color:#bbb; }
+  .pin-pantalla{ max-width:320px; margin:3rem auto; padding:0 1.25rem; text-align:center; }
+  .pin-pantalla input{
+    width:100%; padding:16px; border:1px solid #ddd; border-radius:10px;
+    font-family:'Poppins',sans-serif; font-size:1.4rem; text-align:center; letter-spacing:6px; margin-bottom:12px;
+  }
+  .pin-error{ color:#c0392b; font-size:0.8rem; margin-top:8px; display:none; }
+  #app-staff{display:none;}
+  .sub-nav{ display:flex; gap:0; background:#f2f2ee; border-radius:10px; padding:4px; margin-bottom:1.25rem; }
+  .sub-nav button{
+    flex:1; padding:10px; border:none; background:none; border-radius:8px;
+    font-family:'Poppins',sans-serif; font-size:0.82rem; font-weight:500; color:#888; cursor:pointer;
+  }
+  .sub-nav button.active{ background:var(--r-white); color:var(--r-navy); box-shadow:0 1px 4px rgba(0,0,0,0.08); }
+  .sub-view{display:none;}
+  .sub-view.active{display:block;}
+  .stats-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:1.25rem; }
+  .stat-card{ background:var(--r-white); border-radius:10px; padding:10px 8px; text-align:center; }
+  .stat-card .num{ font-family:'Fraunces',serif; font-size:1.4rem; color:var(--r-navy); display:block; }
+  .stat-card .lbl{ font-size:0.65rem; color:#888; }
+  .fila-cliente{
+    background:var(--r-white); border-radius:12px; padding:12px 14px; margin-bottom:8px; cursor:pointer;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .fila-cliente:active{background:#f7f5ee;}
+  .fila-cliente .nombre{ font-weight:500; font-size:0.9rem; }
+  .fila-cliente .detalle{ font-size:0.75rem; color:#999; }
+  .fila-cliente .sellos-mini{ font-size:0.8rem; font-weight:500; color:var(--r-navy); white-space:nowrap; }
+</style>
+</head>
+<body>
+
+<header>
+  <img class="logo" src="assets/logo-rooftop.png" alt="Kupuri The Rooftop">
+</header>
+
+<p class="config-warning" id="config-warning">
+  Falta conectar la base de datos (Firebase). Revisa el archivo LEEME.md para completar la configuración.
+</p>
+
+<div class="pin-pantalla" id="pin-pantalla">
+  <div class="field">
+    <label>PIN del staff</label>
+    <input type="password" inputmode="numeric" maxlength="4" id="pin-input" placeholder="••••">
+  </div>
+  <button class="btn" id="pin-entrar">Entrar</button>
+  <p class="pin-error" id="pin-error">PIN incorrecto, intenta de nuevo.</p>
+</div>
+
+<div id="app-staff">
+<main>
+
+  <div class="sub-nav">
+    <button id="sub-tab-buscar" class="active">Buscar cliente</button>
+    <button id="sub-tab-dashboard">Todos los clientes</button>
+  </div>
+
+  <section id="view-staff" class="sub-view active">
+    <div class="info-programa">
+      <p>Sello 3 de 10 → 20% de descuento en el total de la cuenta.</p>
+      <p>Sello 5 de 10 → 30% de descuento en el total de la cuenta.</p>
+      <p>Sello 10 de 10 → 50% de descuento en el total de la cuenta.</p>
+    </div>
+    <div class="field">
+      <label>Número de celular del cliente</label>
+      <input type="tel" id="staff-phone" placeholder="998 123 4567">
+    </div>
+    <button class="btn" id="staff-buscar">Buscar cliente</button>
+    <div id="staff-resultado"></div>
+  </section>
+
+  <section id="view-dashboard" class="sub-view">
+    <div class="stats-grid" id="dashboard-stats"></div>
+    <div class="field">
+      <label>Filtrar por nombre, teléfono o colonia</label>
+      <input type="text" id="dashboard-filtro" placeholder="Buscar...">
+    </div>
+    <div id="dashboard-lista"><p class="msg">Cargando clientes…</p></div>
+  </section>
+
+</main>
+</div>
+
+<footer><p class="brand">Panel de staff · Kupuri The Rooftop</p></footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<script>
+
+// ============================================================
+// 1) PEGA AQUI TU CONFIGURACION DE FIREBASE (Proyecto > Configuracion > SDK)
+// ============================================================
+const firebaseConfig = {
+  apiKey: "AIzaSyC8y1nKbVHqBZgknYR0MRPMD7r9Qf79RoI",
+  authDomain: "kupuriroof-lealtad.firebaseapp.com",
+  projectId: "kupuriroof-lealtad",
+  storageBucket: "kupuriroof-lealtad.firebasestorage.app",
+  messagingSenderId: "308030264644",
+  appId: "1:308030264644:web:2e74add43a9a0d19213311"
+};
+// ============================================================
+
+const configPendiente = Object.values(firebaseConfig).some(v => String(v).startsWith('TU_'));
+if(configPendiente){
+  document.getElementById('config-warning').style.display = 'block';
+  document.getElementById('staff-buscar').disabled = true;
+}
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const TOTAL_SELLOS = 10;
+const META_1 = 3;
+const META_2 = 5;
+const META_3 = 10;
+
+function limpiarTel(v){ return v.replace(/\D/g,''); }
+
+// ============================================================
+// PIN del staff — cámbialo aquí por el que quieras usar en el rooftop
+// ============================================================
+const PIN_STAFF = "2026";
+// ============================================================
+
+if(sessionStorage.getItem('rooftop_staff_ok') === 'si'){
+  document.getElementById('pin-pantalla').style.display = 'none';
+  document.getElementById('app-staff').style.display = 'block';
+}
+document.getElementById('pin-entrar').onclick = () => {
+  const valor = document.getElementById('pin-input').value.trim();
+  if(valor === PIN_STAFF){
+    sessionStorage.setItem('rooftop_staff_ok', 'si');
+    document.getElementById('pin-pantalla').style.display = 'none';
+    document.getElementById('app-staff').style.display = 'block';
+  }else{
+    document.getElementById('pin-error').style.display = 'block';
+  }
+};
+document.getElementById('pin-input').addEventListener('keydown', (e) => {
+  if(e.key === 'Enter'){ document.getElementById('pin-entrar').click(); }
+});
+
+let clientesCache = null;
+
+function subNav(){
+  const tabBuscar = document.getElementById('sub-tab-buscar');
+  const tabDash = document.getElementById('sub-tab-dashboard');
+  const viewBuscar = document.getElementById('view-staff');
+  const viewDash = document.getElementById('view-dashboard');
+  tabBuscar.onclick = () => {
+    tabBuscar.classList.add('active'); tabDash.classList.remove('active');
+    viewBuscar.classList.add('active'); viewDash.classList.remove('active');
+  };
+  tabDash.onclick = () => {
+    tabDash.classList.add('active'); tabBuscar.classList.remove('active');
+    viewDash.classList.add('active'); viewBuscar.classList.remove('active');
+    if(!clientesCache){ cargarDashboard(); }
+  };
+}
+subNav();
+
+async function cargarDashboard(){
+  const cont = document.getElementById('dashboard-lista');
+  const stats = document.getElementById('dashboard-stats');
+  cont.innerHTML = '<p class="msg">Cargando clientes…</p>';
+  try{
+    const snap = await db.collection('clientes').get();
+    clientesCache = [];
+    snap.forEach(doc => clientesCache.push({ id: doc.id, ...doc.data() }));
+    clientesCache.sort((a,b) => (b.createdAt||0) - (a.createdAt||0));
+
+    const total = clientesCache.length;
+    const completadas = clientesCache.filter(c => c.stamps >= TOTAL_SELLOS).length;
+    const promedio = total ? (clientesCache.reduce((s,c) => s + (c.stamps||0), 0) / total).toFixed(1) : 0;
+
+    stats.innerHTML = `
+      <div class="stat-card"><span class="num">${total}</span><span class="lbl">Clientes</span></div>
+      <div class="stat-card"><span class="num">${promedio}</span><span class="lbl">Sellos prom.</span></div>
+      <div class="stat-card"><span class="num">${completadas}</span><span class="lbl">Tarjetas completas</span></div>
+    `;
+    renderListaClientes(clientesCache);
+  }catch(e){
+    cont.innerHTML = '<p class="msg error">No se pudo cargar la lista de clientes.</p>';
+  }
+}
+
+function renderListaClientes(lista){
+  const cont = document.getElementById('dashboard-lista');
+  if(lista.length === 0){
+    cont.innerHTML = '<p class="msg">Aún no hay clientes registrados.</p>';
+    return;
+  }
+  cont.innerHTML = lista.map(c => `
+    <div class="fila-cliente" data-tel="${c.phone}">
+      <div>
+        <div class="nombre">${c.name}${c.apellido ? ' ' + c.apellido : ''}</div>
+        <div class="detalle">${c.phone}${c.colonia ? ' · ' + c.colonia : ''}</div>
+      </div>
+      <div class="sellos-mini">${c.stamps||0}/${TOTAL_SELLOS}</div>
+    </div>
+  `).join('');
+  document.querySelectorAll('.fila-cliente').forEach(fila => {
+    fila.onclick = () => {
+      document.getElementById('staff-phone').value = fila.dataset.tel;
+      document.getElementById('sub-tab-buscar').click();
+      document.getElementById('staff-buscar').click();
+    };
+  });
+}
+
+document.getElementById('dashboard-filtro').addEventListener('input', (e) => {
+  if(!clientesCache) return;
+  const q = e.target.value.trim().toLowerCase();
+  const filtrada = clientesCache.filter(c =>
+    (c.name||'').toLowerCase().includes(q) ||
+    (c.apellido||'').toLowerCase().includes(q) ||
+    (c.phone||'').includes(q) ||
+    (c.colonia||'').toLowerCase().includes(q)
+  );
+  renderListaClientes(filtrada);
+});
+
+function mensajeWhatsApp(nombre, stamps){
+  const falta20 = Math.max(0, META_1 - stamps);
+  const falta30 = Math.max(0, META_2 - stamps);
+  const falta50 = Math.max(0, META_3 - stamps);
+
+  if(stamps >= META_3){
+    return `¡Felicidades ${nombre}! Completaste tu tarjeta Kupuri The Rooftop: tienes 50% de descuento en tu próxima visita 🍹`;
+  }
+  if(stamps === META_2){
+    return `¡Felicidades ${nombre}! Ya tienes tu 30% de descuento disponible en Kupuri The Rooftop. Estás a ${falta50} sello(s) de tu 50% 🎉`;
+  }
+  if(stamps > META_2){
+    return `Gracias por tu visita, ${nombre}. Llevas ${stamps} de ${TOTAL_SELLOS} sellos en Kupuri The Rooftop. Estás a ${falta50} sello(s) de tu 50% de descuento 🍹`;
+  }
+  if(stamps === META_1){
+    return `¡Felicidades ${nombre}! Ya tienes tu 20% de descuento disponible en Kupuri The Rooftop. Estás a ${falta30} sello(s) de tu 30% 🎉`;
+  }
+  if(stamps > META_1){
+    return `Gracias por tu visita, ${nombre}. Llevas ${stamps} de ${TOTAL_SELLOS} sellos en Kupuri The Rooftop. Estás a ${falta30} sello(s) de tu 30% y a ${falta50} de tu 50% de descuento 🍹`;
+  }
+  return `Gracias por tu visita, ${nombre}. Llevas ${stamps} de ${TOTAL_SELLOS} sellos en Kupuri The Rooftop. Estás a ${falta20} sello(s) de tu 20% de descuento 🎉`;
+}
+
+function linkWhatsApp(tel, mensaje){
+  const telConLada = tel.length === 10 ? '52' + tel : tel;
+  return `https://wa.me/${telConLada}?text=${encodeURIComponent(mensaje)}`;
+}
+
+function renderStamps(stamps){
+  let html = '<div class="stamps">';
+  for(let i=1;i<=TOTAL_SELLOS;i++){
+    const filled = i <= stamps;
+    let mark = '';
+    if(i === META_1) mark = '20% off';
+    if(i === META_2) mark = '30% off';
+    if(i === META_3) mark = '50% off';
+    const mClass = mark ? 'milestone' : '';
+    html += `<div class="stamp ${filled?'filled':''} ${mClass}" ${mark ? `data-mark="${mark}"` : ''}>${filled?'&#9679;':''}</div>`;
+  }
+  html += '</div>';
+  return html;
+}
+
+function renderRewards(cliente){
+  const r1 = cliente.stamps >= META_1, r1u = cliente.reward1Used;
+  const r2 = cliente.stamps >= META_2, r2u = cliente.reward2Used;
+  const r3 = cliente.stamps >= META_3;
+  let html = '<div class="rewards">';
+  html += `<div class="reward ${r1 && !r1u ? '' : 'locked'}">
+    <div><span class="reward-label">20% de descuento</span><span class="reward-note">3ra visita</span></div>
+    ${r1 && !r1u ? '<button id="btn-usar-1">Usar</button>' : (r1u ? '<span style="font-size:0.7rem;color:#999;">Usado</span>' : '')}
+  </div>`;
+  html += `<div class="reward ${r2 && !r2u ? '' : 'locked'}">
+    <div><span class="reward-label">30% de descuento</span><span class="reward-note">5ta visita</span></div>
+    ${r2 && !r2u ? '<button id="btn-usar-2">Usar</button>' : (r2u ? '<span style="font-size:0.7rem;color:#999;">Usado</span>' : '')}
+  </div>`;
+  html += `<div class="reward ${r3 ? '' : 'locked'}">
+    <div><span class="reward-label">50% de descuento</span><span class="reward-note">10ma visita</span></div>
+    ${r3 ? '<button id="btn-usar-3">Usar y reiniciar</button>' : ''}
+  </div>`;
+  html += '</div>';
+  return html;
+}
+
+function renderDatosExtra(cliente){
+  const filas = [
+    ['Correo', cliente.email],
+    ['Instagram', cliente.instagram],
+    ['Colonia', cliente.colonia],
+    ['Nacimiento', cliente.nacimiento],
+    ['Cómo nos conoció', cliente.conocio],
+    ['Ocupación', cliente.ocupacion]
+  ].filter(([_, v]) => v);
+  let resumen = '<div class="datos-extra">';
+  if(filas.length === 0){
+    resumen += '<p>Sin más datos guardados todavía.</p>';
+  }else{
+    filas.forEach(([label, v]) => { resumen += `<p><strong>${label}:</strong> ${v}</p>`; });
+  }
+  resumen += '</div>';
+  const editar = `
+    <div class="mas-datos" id="editar-datos">
+      <div class="field"><label>Apellido</label><input type="text" id="editar-apellido" value="${cliente.apellido||''}"></div>
+      <div class="field"><label>Correo electrónico</label><input type="email" id="editar-email" value="${cliente.email||''}"></div>
+      <div class="field"><label>Instagram</label><input type="text" id="editar-instagram" value="${cliente.instagram||''}"></div>
+      <div class="field"><label>Colonia / zona</label><input type="text" id="editar-colonia" value="${cliente.colonia||''}"></div>
+      <div class="field"><label>Fecha de nacimiento</label><input type="date" id="editar-nacimiento" value="${cliente.nacimiento||''}"></div>
+      <div class="field"><label>¿Cómo nos conociste?</label>
+        <select id="editar-conocio">
+          <option value="">Selecciona (opcional)</option>
+          <option ${cliente.conocio==='Instagram'?'selected':''}>Instagram</option>
+          <option ${cliente.conocio==='Recomendación de un amigo'?'selected':''}>Recomendación de un amigo</option>
+          <option ${cliente.conocio==='Pasando por la calle'?'selected':''}>Pasando por la calle</option>
+          <option ${cliente.conocio==='Google Maps'?'selected':''}>Google Maps</option>
+          <option ${cliente.conocio==='Otro'?'selected':''}>Otro</option>
+        </select>
+      </div>
+      <div class="field"><label>Ocupación</label><input type="text" id="editar-ocupacion" value="${cliente.ocupacion||''}"></div>
+      <button class="btn" id="guardar-datos">Guardar datos</button>
+    </div>`;
+  return `
+    <button type="button" class="btn-link" id="toggle-editar-datos">Ver / editar más datos</button>
+    ${resumen}
+    ${editar}`;
+}
+
+async function getCliente(tel){
+  const ref = db.collection('clientes').doc(tel);
+  const snap = await ref.get();
+  return { ref, snap };
+}
+
+document.getElementById('staff-buscar').onclick = async () => {
+  const tel = limpiarTel(document.getElementById('staff-phone').value);
+  const cont = document.getElementById('staff-resultado');
+  if(!tel){ cont.innerHTML = '<p class="msg error">Ingresa un número válido.</p>'; return; }
+  cont.innerHTML = '<p class="msg">Buscando…</p>';
+
+  try{
+    const { ref, snap } = await getCliente(tel);
+
+    if(!snap.exists){
+      cont.innerHTML = `
+        <div class="card">
+          <p class="card-name">Cliente nuevo</p>
+          <p class="card-phone">${tel}</p>
+          <div class="field"><label>Nombre</label><input type="text" id="nuevo-nombre" placeholder="Nombre"></div>
+          <div class="field"><label>Apellido</label><input type="text" id="nuevo-apellido" placeholder="Opcional"></div>
+          <button type="button" class="btn-link" id="toggle-mas-datos">+ Agregar más datos (opcional)</button>
+          <div class="mas-datos" id="mas-datos">
+            <div class="field"><label>Correo electrónico</label><input type="email" id="nuevo-email" placeholder="Opcional"></div>
+            <div class="field"><label>Instagram</label><input type="text" id="nuevo-instagram" placeholder="@usuario (opcional)"></div>
+            <div class="field"><label>Colonia / zona</label><input type="text" id="nuevo-colonia" placeholder="Opcional"></div>
+            <div class="field"><label>Fecha de nacimiento</label><input type="date" id="nuevo-nacimiento"></div>
+            <div class="field"><label>¿Cómo nos conociste?</label>
+              <select id="nuevo-conocio">
+                <option value="">Selecciona (opcional)</option>
+                <option>Instagram</option>
+                <option>Recomendación de un amigo</option>
+                <option>Pasando por la calle</option>
+                <option>Google Maps</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div class="field"><label>Ocupación</label><input type="text" id="nuevo-ocupacion" placeholder="Opcional"></div>
+          </div>
+          <button class="btn" id="crear-cliente">Crear tarjeta</button>
+        </div>`;
+      document.getElementById('toggle-mas-datos').onclick = () => {
+        document.getElementById('mas-datos').classList.toggle('abierto');
+      };
+      document.getElementById('crear-cliente').onclick = async () => {
+        const nombre = document.getElementById('nuevo-nombre').value.trim() || 'Cliente';
+        const apellido = document.getElementById('nuevo-apellido').value.trim();
+        const email = document.getElementById('nuevo-email').value.trim();
+        const instagram = document.getElementById('nuevo-instagram').value.trim();
+        const colonia = document.getElementById('nuevo-colonia').value.trim();
+        const nacimiento = document.getElementById('nuevo-nacimiento').value;
+        const conocio = document.getElementById('nuevo-conocio').value;
+        const ocupacion = document.getElementById('nuevo-ocupacion').value.trim();
+        await ref.set({
+          name: nombre, apellido, phone: tel, email, instagram, colonia,
+          nacimiento, conocio, ocupacion,
+          stamps: 0, reward1Used: false, reward2Used: false, createdAt: Date.now()
+        });
+        cargarTarjetaStaff(tel);
+      };
+      return;
+    }
+    cargarTarjetaStaff(tel);
+  }catch(e){
+    cont.innerHTML = '<p class="msg error">No se pudo conectar. Revisa la configuración de Firebase en LEEME.md.</p>';
+  }
+};
+
+async function cargarTarjetaStaff(tel){
+  const cont = document.getElementById('staff-resultado');
+  const { ref, snap } = await getCliente(tel);
+  const cliente = snap.data();
+
+  cont.innerHTML = `
+    <div class="card">
+      <p class="card-name">${cliente.name}${cliente.apellido ? ' ' + cliente.apellido : ''}</p>
+      <p class="card-phone">${cliente.phone}</p>
+      ${renderStamps(cliente.stamps)}
+      <button class="btn" id="btn-sellar" ${cliente.stamps >= TOTAL_SELLOS ? 'disabled' : ''}>+ 1 sello</button>
+      <a class="btn-whatsapp" target="_blank" rel="noopener" href="${linkWhatsApp(cliente.phone, mensajeWhatsApp(cliente.name, cliente.stamps))}">Enviar WhatsApp al cliente</a>
+      ${renderRewards(cliente)}
+      ${renderDatosExtra(cliente)}
+    </div>`;
+
+  const btnSellar = document.getElementById('btn-sellar');
+  if(btnSellar){
+    btnSellar.onclick = async () => {
+      await ref.update({ stamps: firebase.firestore.FieldValue.increment(1) });
+      cargarTarjetaStaff(tel);
+    };
+  }
+  const btn1 = document.getElementById('btn-usar-1');
+  if(btn1){ btn1.onclick = async () => { await ref.update({ reward1Used: true }); cargarTarjetaStaff(tel); }; }
+  const btn2 = document.getElementById('btn-usar-2');
+  if(btn2){ btn2.onclick = async () => { await ref.update({ reward2Used: true }); cargarTarjetaStaff(tel); }; }
+  const btn3 = document.getElementById('btn-usar-3');
+  if(btn3){ btn3.onclick = async () => { await ref.update({ stamps: 0, reward1Used: false, reward2Used: false }); cargarTarjetaStaff(tel); }; }
+
+  document.getElementById('toggle-editar-datos').onclick = () => {
+    document.getElementById('editar-datos').classList.toggle('abierto');
+  };
+  document.getElementById('guardar-datos').onclick = async () => {
+    await ref.update({
+      apellido: document.getElementById('editar-apellido').value.trim(),
+      email: document.getElementById('editar-email').value.trim(),
+      instagram: document.getElementById('editar-instagram').value.trim(),
+      colonia: document.getElementById('editar-colonia').value.trim(),
+      nacimiento: document.getElementById('editar-nacimiento').value,
+      conocio: document.getElementById('editar-conocio').value,
+      ocupacion: document.getElementById('editar-ocupacion').value.trim()
+    });
+    cargarTarjetaStaff(tel);
+  };
+}
+
+</script>
+</body>
+</html>
