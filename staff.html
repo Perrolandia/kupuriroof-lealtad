@@ -3,24 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kupuri Cocina de Mar — Staff</title>
+<title>Kupuri The Rooftop — Staff</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --k-navy:#0E3A53;
-    --k-navy-dark:#092A3D;
-    --k-coral:#E8734A;
-    --k-black:#000000;
-    --k-white:#FFFFFF;
+    --r-navy:#1C2B3A;
+    --r-navy-dark:#111C26;
+    --r-gold:#E8B923;
+    --r-black:#000000;
+    --r-white:#FFFFFF;
     --bg-warm:#FFFBF5;
   }
   *{box-sizing:border-box;}
-  body{
-    margin:0; font-family:'Poppins', sans-serif; background:var(--bg-warm); color:var(--k-black); min-height:100vh;
-  }
-  header{ background:var(--k-navy); padding:2rem 1.5rem 1.75rem; text-align:center; }
-  header img.logo{ width:190px; display:block; margin:0 auto; }
+  body{ margin:0; font-family:'Poppins', sans-serif; background:var(--bg-warm); color:var(--r-black); min-height:100vh; }
+  header{ background:var(--bg-warm); padding:2rem 1.5rem 1.5rem; text-align:center; border-bottom:1px solid #eee2cf; }
+  header img.logo{ width:230px; display:block; margin:0 auto; }
   .config-warning{ background:#FCEBEB; color:#791F1F; font-size:0.8rem; text-align:center; padding:10px 16px; display:none; }
   main{ max-width:480px; margin:0 auto; padding:1.5rem 1.25rem 1rem; }
   .field{margin-bottom:1rem;}
@@ -29,16 +27,16 @@
     width:100%; padding:12px 14px; border:1px solid #ddd; border-radius:10px;
     font-family:'Poppins',sans-serif; font-size:0.95rem; background:#fff;
   }
-  .field input:focus, .field select:focus{ outline:none; border-color:var(--k-navy); }
+  .field input:focus, .field select:focus{ outline:none; border-color:var(--r-navy); }
   .btn{
     width:100%; padding:13px; border:none; border-radius:10px;
-    background:var(--k-navy); color:var(--k-white);
+    background:var(--r-navy); color:var(--r-white);
     font-family:'Poppins',sans-serif; font-weight:500; font-size:0.95rem; cursor:pointer; margin-top:4px;
   }
-  .btn:active{background:var(--k-navy-dark);}
+  .btn:active{background:var(--r-navy-dark);}
   .btn:disabled{opacity:0.4;cursor:default;}
   .btn-link{
-    width:100%; padding:10px; border:none; background:none; color:var(--k-navy);
+    width:100%; padding:10px; border:none; background:none; color:var(--r-navy);
     font-family:'Poppins',sans-serif; font-weight:500; font-size:0.85rem; cursor:pointer; text-align:center; margin-bottom:6px;
   }
   .btn-whatsapp{
@@ -50,13 +48,11 @@
   .mas-datos.abierto{display:block;}
   .datos-extra{ font-size:0.8rem; color:#666; margin-top:1rem; padding-top:1rem; border-top:1px solid #eee; }
   .datos-extra p{margin:0 0 6px;}
-  .datos-extra strong{color:var(--k-black);}
-  .info-programa{ background:#FBE3D8; border-radius:14px; padding:14px 16px; margin-bottom:1.25rem; font-size:0.8rem; }
+  .datos-extra strong{color:var(--r-black);}
+  .info-programa{ background:#FBF0D2; border-radius:14px; padding:14px 16px; margin-bottom:1.25rem; font-size:0.8rem; }
   .info-programa p{ margin:0 0 6px; font-weight:500; }
   .info-programa p:last-child{margin-bottom:0;}
-  .card{
-    background:var(--k-white); border-radius:16px; padding:1.5rem; margin-top:1.25rem; box-shadow:0 2px 14px rgba(0,0,0,0.06);
-  }
+  .card{ background:var(--r-white); border-radius:16px; padding:1.5rem; margin-top:1.25rem; box-shadow:0 2px 14px rgba(0,0,0,0.06); }
   .card-name{ font-family:'Fraunces',serif; font-size:1.3rem; margin:0 0 4px; }
   .card-phone{ font-size:0.8rem; color:#999; margin:0 0 1.25rem; }
   .stamps{ display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-bottom:1.25rem; }
@@ -64,22 +60,22 @@
     aspect-ratio:1; border-radius:50%; border:2px dashed #ddd;
     display:flex; align-items:center; justify-content:center; font-size:1.1rem; position:relative;
   }
-  .stamp.filled{ border:2px solid var(--k-coral); background:var(--k-coral); color:var(--k-white); }
+  .stamp.filled{ border:2px solid var(--r-gold); background:var(--r-gold); color:var(--r-navy); }
   .stamp.milestone::after{
     content:attr(data-mark); position:absolute; bottom:-18px; font-size:0.58rem;
-    color:var(--k-navy); font-weight:600; white-space:nowrap;
+    color:var(--r-navy); font-weight:600; white-space:nowrap;
   }
   .rewards{margin-top:1.75rem;}
   .reward{
     display:flex; align-items:center; justify-content:space-between;
-    padding:12px 14px; border-radius:10px; background:#FBE3D8; margin-bottom:10px; font-size:0.85rem;
+    padding:12px 14px; border-radius:10px; background:#FBF0D2; margin-bottom:10px; font-size:0.85rem;
   }
   .reward.locked{ background:#f2f2f2; color:#aaa; }
   .reward-label{font-weight:500;}
-  .reward-note{ font-size:0.7rem; color:#a15631; display:block; margin-top:2px; }
+  .reward-note{ font-size:0.7rem; color:#8a6d1f; display:block; margin-top:2px; }
   .reward.locked .reward-note{color:#bbb;}
   .reward button{
-    padding:8px 12px; border:none; border-radius:8px; background:var(--k-navy); color:#fff;
+    padding:8px 12px; border:none; border-radius:8px; background:var(--r-navy); color:#fff;
     font-size:0.75rem; font-weight:500; cursor:pointer;
   }
   .msg{ text-align:center; font-size:0.85rem; color:#999; padding:2rem 0; }
@@ -98,27 +94,27 @@
     flex:1; padding:10px; border:none; background:none; border-radius:8px;
     font-family:'Poppins',sans-serif; font-size:0.82rem; font-weight:500; color:#888; cursor:pointer;
   }
-  .sub-nav button.active{ background:var(--k-white); color:var(--k-navy); box-shadow:0 1px 4px rgba(0,0,0,0.08); }
+  .sub-nav button.active{ background:var(--r-white); color:var(--r-navy); box-shadow:0 1px 4px rgba(0,0,0,0.08); }
   .sub-view{display:none;}
   .sub-view.active{display:block;}
   .stats-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:1.25rem; }
-  .stat-card{ background:var(--k-white); border-radius:10px; padding:10px 8px; text-align:center; }
-  .stat-card .num{ font-family:'Fraunces',serif; font-size:1.4rem; color:var(--k-navy); display:block; }
+  .stat-card{ background:var(--r-white); border-radius:10px; padding:10px 8px; text-align:center; }
+  .stat-card .num{ font-family:'Fraunces',serif; font-size:1.4rem; color:var(--r-navy); display:block; }
   .stat-card .lbl{ font-size:0.65rem; color:#888; }
   .fila-cliente{
-    background:var(--k-white); border-radius:12px; padding:12px 14px; margin-bottom:8px; cursor:pointer;
+    background:var(--r-white); border-radius:12px; padding:12px 14px; margin-bottom:8px; cursor:pointer;
     display:flex; justify-content:space-between; align-items:center;
   }
   .fila-cliente:active{background:#f7f5ee;}
   .fila-cliente .nombre{ font-weight:500; font-size:0.9rem; }
   .fila-cliente .detalle{ font-size:0.75rem; color:#999; }
-  .fila-cliente .sellos-mini{ font-size:0.8rem; font-weight:500; color:var(--k-coral); white-space:nowrap; }
+  .fila-cliente .sellos-mini{ font-size:0.8rem; font-weight:500; color:var(--r-navy); white-space:nowrap; }
 </style>
 </head>
 <body>
 
 <header>
-  <img class="logo" src="assets/logo-kupuri-blanco.png" alt="Kupuri Cocina de Mar">
+  <img class="logo" src="assets/logo-rooftop.png" alt="Kupuri The Rooftop">
 </header>
 
 <p class="config-warning" id="config-warning">
@@ -144,9 +140,9 @@
 
   <section id="view-staff" class="sub-view active">
     <div class="info-programa">
-      <p>Sello 3 de 10 → 1 empanada de camarón gratis.</p>
-      <p>Sello 5 de 10 → 1 cubeta de 5 Coronitas o Victorias 210ml.</p>
-      <p>Sello 10 de 10 → 1 aguachile grande gratis.</p>
+      <p>Sello 3 de 10 → 20% de descuento en el total de la cuenta.</p>
+      <p>Sello 5 de 10 → 30% de descuento en el total de la cuenta.</p>
+      <p>Sello 10 de 10 → 50% de descuento en el total de la cuenta.</p>
     </div>
     <div class="field">
       <label>Número de celular del cliente</label>
@@ -168,7 +164,7 @@
 </main>
 </div>
 
-<footer><p class="brand">Panel de staff · Kupuri Cocina de Mar</p></footer>
+<footer><p class="brand">Panel de staff · Kupuri The Rooftop</p></footer>
 
 <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
@@ -178,12 +174,12 @@
 // 1) PEGA AQUI TU CONFIGURACION DE FIREBASE (Proyecto > Configuracion > SDK)
 // ============================================================
 const firebaseConfig = {
-  apiKey: "AIzaSyBU6zcCcJmKa-a5zLNTibVfKxjQzWEjtt8",
-  authDomain: "kupurirest-lealtad.firebaseapp.com",
-  projectId: "kupurirest-lealtad",
-  storageBucket: "kupurirest-lealtad.firebasestorage.app",
-  messagingSenderId: "55450440940",
-  appId: "1:55450440940:web:d8b0ae890f9b54c66701c9"
+  apiKey: "AIzaSyC8y1nKbVHqBZgknYR0MRPMD7r9Qf79RoI",
+  authDomain: "kupuriroof-lealtad.firebaseapp.com",
+  projectId: "kupuriroof-lealtad",
+  storageBucket: "kupuriroof-lealtad.firebasestorage.app",
+  messagingSenderId: "308030264644",
+  appId: "1:308030264644:web:2e74add43a9a0d19213311"
 };
 // ============================================================
 
@@ -203,19 +199,19 @@ const META_3 = 10;
 function limpiarTel(v){ return v.replace(/\D/g,''); }
 
 // ============================================================
-// PIN del staff — cámbialo aquí por el que quieras usar en el restaurante
+// PIN del staff — cámbialo aquí por el que quieras usar en el rooftop
 // ============================================================
 const PIN_STAFF = "2026";
 // ============================================================
 
-if(sessionStorage.getItem('kupuri_staff_ok') === 'si'){
+if(sessionStorage.getItem('rooftop_staff_ok') === 'si'){
   document.getElementById('pin-pantalla').style.display = 'none';
   document.getElementById('app-staff').style.display = 'block';
 }
 document.getElementById('pin-entrar').onclick = () => {
   const valor = document.getElementById('pin-input').value.trim();
   if(valor === PIN_STAFF){
-    sessionStorage.setItem('kupuri_staff_ok', 'si');
+    sessionStorage.setItem('rooftop_staff_ok', 'si');
     document.getElementById('pin-pantalla').style.display = 'none';
     document.getElementById('app-staff').style.display = 'block';
   }else{
@@ -307,26 +303,26 @@ document.getElementById('dashboard-filtro').addEventListener('input', (e) => {
 });
 
 function mensajeWhatsApp(nombre, stamps){
-  const faltanEmpanada = Math.max(0, META_1 - stamps);
-  const faltanCubeta = Math.max(0, META_2 - stamps);
-  const faltanAguachile = Math.max(0, META_3 - stamps);
+  const falta20 = Math.max(0, META_1 - stamps);
+  const falta30 = Math.max(0, META_2 - stamps);
+  const falta50 = Math.max(0, META_3 - stamps);
 
   if(stamps >= META_3){
-    return `¡Felicidades ${nombre}! Completaste tu tarjeta Kupuri Cocina de Mar: tienes un aguachile grande gratis para tu próxima visita 🦐`;
+    return `¡Felicidades ${nombre}! Completaste tu tarjeta Kupuri The Rooftop: tienes 50% de descuento en tu próxima visita 🍹`;
   }
   if(stamps === META_2){
-    return `¡Felicidades ${nombre}! Ya tienes tu cubeta de 5 Coronitas/Victorias disponible en Kupuri. Estás a ${faltanAguachile} sello(s) de tu aguachile grande gratis 🍤`;
+    return `¡Felicidades ${nombre}! Ya tienes tu 30% de descuento disponible en Kupuri The Rooftop. Estás a ${falta50} sello(s) de tu 50% 🎉`;
   }
   if(stamps > META_2){
-    return `Gracias por tu visita, ${nombre}. Llevas ${stamps} de ${TOTAL_SELLOS} sellos en Kupuri Cocina de Mar. Estás a ${faltanAguachile} sello(s) de tu aguachile grande gratis 🦐`;
+    return `Gracias por tu visita, ${nombre}. Llevas ${stamps} de ${TOTAL_SELLOS} sellos en Kupuri The Rooftop. Estás a ${falta50} sello(s) de tu 50% de descuento 🍹`;
   }
   if(stamps === META_1){
-    return `¡Felicidades ${nombre}! Ya tienes tu empanada de camarón gratis disponible en Kupuri. Estás a ${faltanCubeta} sello(s) de tu cubeta gratis 🍺`;
+    return `¡Felicidades ${nombre}! Ya tienes tu 20% de descuento disponible en Kupuri The Rooftop. Estás a ${falta30} sello(s) de tu 30% 🎉`;
   }
   if(stamps > META_1){
-    return `Gracias por tu visita, ${nombre}. Llevas ${stamps} de ${TOTAL_SELLOS} sellos en Kupuri Cocina de Mar. Estás a ${faltanCubeta} sello(s) de tu cubeta gratis y a ${faltanAguachile} de tu aguachile grande 🦐`;
+    return `Gracias por tu visita, ${nombre}. Llevas ${stamps} de ${TOTAL_SELLOS} sellos en Kupuri The Rooftop. Estás a ${falta30} sello(s) de tu 30% y a ${falta50} de tu 50% de descuento 🍹`;
   }
-  return `Gracias por tu visita, ${nombre}. Llevas ${stamps} de ${TOTAL_SELLOS} sellos en Kupuri Cocina de Mar. Estás a ${faltanEmpanada} sello(s) de tu empanada de camarón gratis 🍤`;
+  return `Gracias por tu visita, ${nombre}. Llevas ${stamps} de ${TOTAL_SELLOS} sellos en Kupuri The Rooftop. Estás a ${falta20} sello(s) de tu 20% de descuento 🎉`;
 }
 
 function linkWhatsApp(tel, mensaje){
@@ -339,9 +335,9 @@ function renderStamps(stamps){
   for(let i=1;i<=TOTAL_SELLOS;i++){
     const filled = i <= stamps;
     let mark = '';
-    if(i === META_1) mark = 'Empanada';
-    if(i === META_2) mark = 'Cubeta';
-    if(i === META_3) mark = 'Aguachile';
+    if(i === META_1) mark = '20% off';
+    if(i === META_2) mark = '30% off';
+    if(i === META_3) mark = '50% off';
     const mClass = mark ? 'milestone' : '';
     html += `<div class="stamp ${filled?'filled':''} ${mClass}" ${mark ? `data-mark="${mark}"` : ''}>${filled?'&#9679;':''}</div>`;
   }
@@ -355,15 +351,15 @@ function renderRewards(cliente){
   const r3 = cliente.stamps >= META_3;
   let html = '<div class="rewards">';
   html += `<div class="reward ${r1 && !r1u ? '' : 'locked'}">
-    <div><span class="reward-label">Empanada de camarón gratis</span><span class="reward-note">3ra visita</span></div>
+    <div><span class="reward-label">20% de descuento</span><span class="reward-note">3ra visita</span></div>
     ${r1 && !r1u ? '<button id="btn-usar-1">Usar</button>' : (r1u ? '<span style="font-size:0.7rem;color:#999;">Usado</span>' : '')}
   </div>`;
   html += `<div class="reward ${r2 && !r2u ? '' : 'locked'}">
-    <div><span class="reward-label">Cubeta de 5 Coronitas/Victorias</span><span class="reward-note">5ta visita</span></div>
+    <div><span class="reward-label">30% de descuento</span><span class="reward-note">5ta visita</span></div>
     ${r2 && !r2u ? '<button id="btn-usar-2">Usar</button>' : (r2u ? '<span style="font-size:0.7rem;color:#999;">Usado</span>' : '')}
   </div>`;
   html += `<div class="reward ${r3 ? '' : 'locked'}">
-    <div><span class="reward-label">Aguachile grande gratis</span><span class="reward-note">10ma visita</span></div>
+    <div><span class="reward-label">50% de descuento</span><span class="reward-note">10ma visita</span></div>
     ${r3 ? '<button id="btn-usar-3">Usar y reiniciar</button>' : ''}
   </div>`;
   html += '</div>';
